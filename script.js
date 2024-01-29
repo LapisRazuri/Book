@@ -60,6 +60,20 @@ Book.prototype.removeBook = function(bookDiv) {
     bookDiv.remove();
 };
 
+Book.prototype.createReadBtn = function(bookDiv) {
+
+    const readBtn = document.createElement("button");
+    readBtn.textContent = "NOT READ YET";
+
+    readBtn.addEventListener('click', () => {
+        readBtn.textContent = (readBtn.textContent == "NOT READ YET") ? "READ" : "NOT READ YET";
+        });
+
+    bookDiv.appendChild(readBtn);
+}
+
+
+
 
 
 newBook.addEventListener('click', showModal);
@@ -70,6 +84,7 @@ addBook.addEventListener('click', function(event) {
     let bookDiv = linkHtmlWithBookObject(bookCreated);
 
     bookCreated.createRemoveBtn(bookDiv);
+    bookCreated.createReadBtn(bookDiv);
 
 });
 
