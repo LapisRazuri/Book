@@ -1,9 +1,64 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
-    <!-- ↓ Inter  Regular 400     Font-->
     <title>Document</title>
 </head>
+<body>
+    <sidebar>
+        <dialog id="dialog">
+            <form method="dialog">
+                <section>
+                    <p>
+                        <div>
+                            <label for="title">What is the title of the book?</label>
+                            <input type="text" id="title" name="title" value="Hobbit">
+                        </div>
+
+                        <div>
+                            <label for="author">Who is the author?</label>
+                            <input type="text" id="author" name="author" value="Tokien">
+                        </div>
+
+                        <div>
+                            <label for="pages">How many pages?</label>
+                            <input type="text" id="pages" name="pages" value="295">
+                        </div>
+
+                        <div>
+                            <label for="readOrNotRead">Have you read or not read yet?</label>
+                            <input type="text" id="readOrNotRead" name="readOrNotRead" value="read">
+                        </div>
+                    </p>
+                </section>
+
+                <section>
+                    <button id="addBook">ADD BOOK</button>
+                </section>
+
+            </form>
+        </dialog>
+
+        <menu>
+            <button id="newBook">NEW BOOK</button>
+        </menu>
+
+
+        <dialog id="dialog">
+            <form method="dialog">
+            </form>
+        </dialog>
+
+        <menu>
+            <button id="displayBook">DISPLAY BOOK</button>
+        </menu>
+        
+    </sidebar>
+
+
+    <head></head>
+    <main id="main"></main>
+</body>

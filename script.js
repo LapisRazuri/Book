@@ -1,4 +1,13 @@
+const newBook = document.getElementById("newBook");
+const addBook = document.getElementById("addBook")
+const dialog = document.getElementById("dialog");
+const displayBook = document.getElementById("displayBook");
+const main = document.getElementById("main");
+const bookAttribute = document.get
 const myLibrary = [];
+
+
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -11,48 +20,106 @@ function Book(title, author, pages, read) {
     };
 }
 
+Book.prototype.info = function() {
+    return "The" + " "+ this.title + " " + "by" + " " +  this.author + 
+    "," + " " + this.pages + " " + "pages" + "," + " " + this.read + "." 
+}; 
 
-function addBookToLibrary (book) {
-    myLibrary.push(book);
-    console.log(myLibrary);
+Book.prototype.createRemoveBtn = function(bookDiv) {
+
+    console.log(bookDiv);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "REMOVE BOOK";
+
+    console.log(this)
+
+    removeBtn.addEventListener('click', () => {
+
+        console.log(this);
+        console.log(bookDiv);
+        this.removeBook(bookDiv);
+    });
+
+    bookDiv.appendChild(removeBtn);
+
+    console.log(bookDiv)
+
+   
+}
+
+Book.prototype.removeBook = function(bookDiv) {
+
+    console.log(bookDiv);
+    console.log(this);
+
+    myLibrary.splice(this, 1);
+
+    console.log(this);
+
+    bookDiv.remove();
+};
+
+
+
+newBook.addEventListener('click', showModal);
+addBook.addEventListener('click', function(event) {
+
+    let input = passUserInput(event);
+    let bookCreated = addBookToLibrary(input);
+    let bookDiv = linkHtmlWithBookObject(bookCreated);
+
+    bookCreated.createRemoveBtn(bookDiv);
+
+});
+
+addBook.addEventListener('click', closeModal)
+
+
+
+function showModal(){
+    dialog.showModal();
 }
 
 
 
-function displayBooks() {
-    myLibrary.forEach(book => console.table(book))
+function passUserInput(event) {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const read = document.getElementById("readOrNotRead").value;
+
+    event.preventDefault();
+
+    console.log(title)
+
+    return [title, author, pages, read];
+} 
+
+
+
+function addBookToLibrary (array) {
+        let book = new Book(array[0], array[1], array[2], array[3]);
+
+        console.log(book);
+
+        myLibrary.push(book);  
+
+        return book;
 }
 
+function linkHtmlWithBookObject(book) {
+    let bookDiv = document.createElement("div");
+    bookDiv.id = book.title;
+    bookDiv.setAttribute("data-bookNo", book.title);
+    bookDiv.textContent = book.info();
+    main.appendChild(bookDiv);
 
+console.log(main)
 
+    return bookDiv;
+}
 
-
-
-const book1 = new Book("Hobbit", "J.R.R Tolkien", "295", "not read yet")
-const book2 = new Book("GarasuNoKamen", "Miuchi Suzue", "670", "read")
-const book3 = new Book("Inferno", "Dan Brown", "364", "read")
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-
-displayBooks();
-
-
-
-
-// Uncomment this if you want the user to input the books
-// const userBookTitle = prompt("What is the name of the book?");
-// const userBookAuthor = prompt("Who is the author?");
-// const userBookPages = prompt("How many pages?");
-// const userBookRead = prompt("Read or not read yet?")
-
-// displayBooks(addBookToLibrary(userBookTitle, userBookAuthor, userBookPages, userBookRead))
-
-
-// And change the addBookToLibrary to below
-// function addBookToLibrary (userBookTitle, userBookAuthor, userBookPages, userBookRead) {
-//     const book = new Book(userBookTitle, userBookAuthor, userBookPages, userBookRead)
-//     myLibrary.push(book);
-//     console.log(myLibrary);
-// }
+function closeModal() {
+    dialog.close();
+}
