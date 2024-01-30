@@ -1,8 +1,10 @@
 const newBook = document.getElementById("newBook");
-const addBook = document.getElementById("addBook")
+const addBook = document.getElementById("addBook");
+const closeDialog = document.getElementById("closeDialog"); 
 const dialog = document.getElementById("dialog");
 const displayBook = document.getElementById("displayBook");
 const main = document.getElementById("main");
+const table = document.getElementById("table");
 const bookAttribute = document.get
 const myLibrary = [];
 
@@ -14,62 +16,68 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function () {
-        return "The" + " "+ this.title + " " + "by" + " " +  this.author + 
-        "," + " " + this.pages + " " + "pages" + "," + " " + this.read + "."
-    };
 }
 
 Book.prototype.info = function() {
     return "The" + " "+ this.title + " " + "by" + " " +  this.author + 
-    "," + " " + this.pages + " " + "pages" + "," + " " + this.read + "." 
+    "," + " " + this.pages + " " + "pages" + "."  
 }; 
 
-Book.prototype.createRemoveBtn = function(bookDiv) {
+Book.prototype.createRemoveBtn = function(booktr) {
 
-    console.log(bookDiv);
+    console.log(booktr);
 
-    const removeBtn = document.createElement("button");
+    let removeBtntd = document.createElement("td");
+    let removeBtn = document.createElement("button");
+
+    booktr.appendChild(removeBtntd);
+    removeBtntd.appendChild(removeBtn);
+
     removeBtn.textContent = "REMOVE BOOK";
+    removeBtntd.classList.add('removeBtn');
 
     console.log(this)
 
     removeBtn.addEventListener('click', () => {
 
         console.log(this);
-        console.log(bookDiv);
-        this.removeBook(bookDiv);
+        console.log(booktr);
+        this.removeBook(booktr);
     });
 
-    bookDiv.appendChild(removeBtn);
-
-    console.log(bookDiv)
+    console.log(booktr)
 
    
 }
 
-Book.prototype.removeBook = function(bookDiv) {
+Book.prototype.removeBook = function(booktr) {
 
-    console.log(bookDiv);
+    console.log(booktr);
     console.log(this);
 
     myLibrary.splice(this, 1);
 
     console.log(this);
 
-    bookDiv.remove();
+    booktr.remove();
 };
 
-Book.prototype.createReadBtn = function(bookDiv) {
+Book.prototype.createReadBtn = function(booktr) {
 
-    const readBtn = document.createElement("button");
-    readBtn.textContent = "NOT READ YET";
+    let readBtntd = document.createElement("td");
+    let readBtn = document.createElement("button");
+
+    readBtn.textContent = this.read;
+    readBtntd.classList.add('readBtn');
+
+    booktr.appendChild(readBtntd);
+    readBtntd.appendChild(readBtn);
+
 
     readBtn.addEventListener('click', () => {
         readBtn.textContent = (readBtn.textContent == "NOT READ YET") ? "READ" : "NOT READ YET";
         });
 
-    bookDiv.appendChild(readBtn);
 }
 
 
@@ -77,18 +85,21 @@ Book.prototype.createReadBtn = function(bookDiv) {
 
 
 newBook.addEventListener('click', showModal);
+addBook.addEventListener('click', closeModal)
 addBook.addEventListener('click', function(event) {
 
     let input = passUserInput(event);
     let bookCreated = addBookToLibrary(input);
-    let bookDiv = linkHtmlWithBookObject(bookCreated);
+    let booktr = linkHtmlWithBookObject(bookCreated);
 
-    bookCreated.createRemoveBtn(bookDiv);
-    bookCreated.createReadBtn(bookDiv);
+    bookCreated.createRemoveBtn(booktr);
+    bookCreated.createReadBtn(booktr);
 
 });
 
-addBook.addEventListener('click', closeModal)
+
+
+closeDialog.addEventListener('click', closeModal)
 
 
 
@@ -102,7 +113,10 @@ function passUserInput(event) {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    const read = document.getElementById("readOrNotRead").value;
+    // const read = document.getElementById("readOrNotRead").value;
+    const read = document.querySelector('input[name="readOrNotRead"]:checked').value;
+
+    console.log(read)
 
     event.preventDefault();
 
@@ -124,15 +138,16 @@ function addBookToLibrary (array) {
 }
 
 function linkHtmlWithBookObject(book) {
-    let bookDiv = document.createElement("div");
-    bookDiv.id = book.title;
-    bookDiv.setAttribute("data-bookNo", book.title);
-    bookDiv.textContent = book.info();
-    main.appendChild(bookDiv);
+    let booktr = document.createElement("tr");
+    let booktd = document.createElement("td");
+    booktd.id = book.title;
+    booktd.setAttribute("data-bookNo", book.title);
+    booktd.textContent = book.info();
+    booktd.classList.add('bookDescription');
+    table.appendChild(booktr);
+    booktr.appendChild(booktd);
 
-console.log(main)
-
-    return bookDiv;
+    return booktr;
 }
 
 function closeModal() {

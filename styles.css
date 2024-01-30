@@ -2,31 +2,170 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Mulish', sans-serif;
 }
 
-main#main {
+.readBtn > button {
+    width: 150px;
 }
+
+.removeBtn > button {
+    width: 150px;
+    margin: 10px;
+}
+
+
+td.readBtn {
+    width: 130px;
+}
+
+td.removeBtn {
+    width: 150px;
+    /* margin-left: 20px; */
+}
+
+.bookDescription {
+    max-width: 507px;
+    /* display: flex; */
+    text-align: center;
+}
+
+
+tr {
+    border: 1px solid black;
+}
+
+
+menu > div {
+    display: flex;
+    justify-content: center;
+}
+
+
+table#table {background: mediumturquoise;/* width: clamp(1000px, 1300px, 100%); */padding-right: 20px;}
+
+
+div#readOrNotRead {
+    display: grid;
+    grid-template-columns: 100px 20px;
+}
+
+.readOrNotRead {
+    display: grid;
+    grid-template-columns: 100px 20px;
+}
+
+
+
+dialog#dialog {
+    border: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 600px;
+    height: 450px;
+    overflow: hidden;
+}
+
+dialog::backdrop {
+    background-color: mediumorchid;
+}
+
+button {
+    /* color: black; */
+    background: white;
+    border: none;
+    padding: 10px;
+}
+
+button#closeDialog {
+    padding: 3px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+dialog > div {
+    background: dodgerblue;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+
+.question4 {
+    grid-row: 4 / 5;
+}
+
+.question3 {
+    grid-row: 3 / 4;
+}
+
+.question2 {
+    grid-row: 2 /3;
+}
+
+.question1 {grid-row: 1 /2;}
+
+
+
+
+.questions {
+    display: grid;
+    grid-template: repeat(4, minmax(50px, 1fr)) / minmax(200px, 1fr);
+    /* grid-template-areas:
+        "question1"
+        "question2"
+        "question3"
+        "question4"; */
+    justify-content: center;
+    align-items: center;
+}
+
+
+form {
+    display: grid;
+    grid-gap: 50px;
+    justify-items: center;
+    padding: 20px;
+    background: dodgerblue;
+    width: 100%;
+    height: 100%;
+}
+
+
+main > div > button {background: gainsboro;padding: 5px;border: none;}
 
 
 body {
     display: grid;
-    grid-template: 
-    minmax(300px, 3fr) minmax(700px, 7fr) / 
-    minmax(200px, 2fr) minmax(600px, 6fr);
-    grid-template-areas: "sidebar header" "sidebar main";
+    grid-template: minmax(300px, 3fr) / 
+    minmax(100px, 1fr) minmax(800px, 8fr);
+    grid-template-areas:
+        "sidebar main";
     height: 100vh;
     width: 100vw;
-    padding: 20px;
+    padding: 20px 20px 0px 0px;
 }
 
-p > div {
-    display: grid;
+body {
+    background: dodgerblue;
 }
+
 
 #main > div {
-    border: 1px solid black;
     color: black;
     display: flex;
     justify-content: space-around;
+    background: white;
+    border: none;
+    padding: 10px;
 }
 
