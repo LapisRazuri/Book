@@ -1,1 +1,1 @@
-# Book
+In this lesson, I could access the instance of the Book object book by creating prototypes of Book. It was easier to get access to the book. In initial attempt, book instance was passed on through arguments which changed their value i.e were not object any more, so I found prototypes to be very useful. # Book
