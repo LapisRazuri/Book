@@ -1,4 +1,5 @@
 class Book {
+    static dialog = document.getElementById("dialog");
     static table = document.getElementById("table");
     static myLibrary = [];
 
@@ -106,17 +107,19 @@ class Book {
             });
     
     }
+
+    static showDialog(){
+        
+        return Book.dialog.showModal();
+    }
+    
+    static closeDialog() {
+    
+        return Book.dialog.close();
+    }
 }   
 
 
-    function showDialog(){
-        const dialog = document.getElementById("dialog");
-        return dialog.showModal();
-    }
 
-    function closeDialog() {
-        const dialog = document.getElementById("dialog");
-        return dialog.close();
-    }
 
 
