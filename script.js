@@ -13,65 +13,66 @@ class Book {
                     "," + " " + this.pages + " " + "pages" + "." 
         }
 
-    }
+    };
 
     static createNewBook(event) {
-        this.title = document.getElementById("title").value;
-        this.author = document.getElementById("author").value;
-        this.pages = document.getElementById("pages").value;
-        this.read = document.querySelector('input[name="readOrNotRead"]:checked').value;
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const pages = document.getElementById("pages").value;
+        const read = document.querySelector('input[name="readOrNotRead"]:checked').value;
         // const read = document.getElementById("readOrNotRead").value;
 
-        console.log(this.title);
-        console.log(this.author);
-        console.log(this.pages);
-        console.log(this.read);
+        console.log(title);
+        console.log(author);
+        console.log(pages);
+        console.log(read);
 
-        this.book = new Book(this.title, this.author, this.pages, this.read);
+        const book = new Book(title, author, pages, read);
 
         event.preventDefault();
 
-        console.log(this.book)
-        
-        Book.addBookToLibrary();
-        Book.displayNewBook();
-        Book.displayRemoveBtn();
-        Book.displayReadBtn();
+        console.log(book);
+
+        Book.addBookToLibrary(book);
+        Book.displayNewBook(book);
+        Book.displayRemoveBtn(book);
+        Book.displayReadBtn(book);
        
         return this.book;
 
-    } 
+    };
 
-    static addBookToLibrary () {
-        Book.myLibrary.push(this.book);  
+    static addBookToLibrary (book) {
+        Book.myLibrary.push(book);  
 
-        console.log(this.book)
+        console.log(book);
 
-        return this.book;
-    }
+        return book;
+    };
 
-    static displayNewBook() {
-        this.booktr = document.createElement("tr");
-        this.booktd = document.createElement("td");
+    static displayNewBook(book) {
+        const booktr = document.createElement("tr");
+        const booktd = document.createElement("td");
 
-        this.booktd.id = this.book.title;
+        table.appendChild(booktr);
+        booktr.appendChild(booktd);
+
+        booktd.id = book.title;
         // this.booktd.setAttribute("data-bookNo", this.book.title);
-        this.booktd.textContent = this.book.info();
-        this.booktd.classList.add('bookDescription');
-        table.appendChild(this.booktr);
-        this.booktr.appendChild(this.booktd);
+        booktd.textContent = book.info();
+        booktd.classList.add('bookDescription');
+        
 
-        return this.booktr;
-    }
+        return booktd;
+    };
 
-    static displayRemoveBtn () {
+    static displayRemoveBtn (book) {
+        const removeBtntr = document.createElement("tr");
+        const removeBtntd = document.createElement("td");
+        const removeBtn = document.createElement("button");
 
-        console.log(this.booktr);
-
-        let removeBtntd = document.createElement("td");
-        let removeBtn = document.createElement("button");
-
-        this.booktr.appendChild(removeBtntd);
+        table.appendChild(removeBtntr);
+        removeBtntr.appendChild(removeBtntd);
         removeBtntd.appendChild(removeBtn);
 
         removeBtn.textContent = "REMOVE BOOK";
@@ -80,46 +81,48 @@ class Book {
         
 
         removeBtn.addEventListener('click', () => {
-            this.book.removeBook(this.booktr);
+            console.log(this)
+            book.removeBook(book, removeBtntr);
+            console.log(book)
         });
-    }
-
-    removeBook (removeBook) {
-        Book.myLibrary.splice(this.book, 1);
-        console.log(removeBook)
-        removeBook.remove();
     };
 
-    static displayReadBtn () {
+ 
+    removeBook (removeBook, removeBtnTr) {
+        Book.myLibrary.splice(removeBook, 1);
+        console.log(removeBook)
+        removeBtnTr.remove();
+    };
 
-        let readBtntd = document.createElement("td");
-        let readBtn = document.createElement("button");
+    static displayReadBtn (book) {
+        const readBtntr = document.createElement("tr");
+        const readBtntd = document.createElement("td");
+        const readBtn = document.createElement("button");
+
+        table.appendChild(readBtntr);
+        readBtntr.appendChild(readBtntd);
+        readBtntd.appendChild(readBtn);
     
-        readBtn.textContent = this.read;
+        console.log(book.read)
+        readBtn.textContent = book.read;
         readBtntd.classList.add('readBtn');
     
-        this.booktr.appendChild(readBtntd);
-        readBtntd.appendChild(readBtn);
+        
     
     
         readBtn.addEventListener('click', () => {
             readBtn.textContent = (readBtn.textContent == "NOT READ YET") ? "READ" : "NOT READ YET";
-            });
+        });
     
-    }
+    };
 
     static showDialog(){
         
         return Book.dialog.showModal();
-    }
+    };
     
     static closeDialog() {
     
         return Book.dialog.close();
-    }
-}   
-
-
-
-
-
+    };
+};  
