@@ -5,34 +5,106 @@
     font-family: 'Mulish', sans-serif;
 }
 
-.readBtn > button {
-    width: 150px;
+div#subMain2 {}
+
+div#subMain2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.removeBtn > button {
+.subMain1 {
+    width: 100%;
+    display: flex;
+    /* height: max(80vh * 1/5, 20%); */
+}
+
+div#heading {
+    font-size: 1.5rem;
+    display: flex;
+}
+
+div#heading {}
+
+.items {
+    padding: 1.5rem;
+    /* overflow: overlay; */
+    height: max(((80vh * 4/5)* 1/5)* 0.5/10, 5%);
+    width: max(80vh * 1/5, 10%);
+    word-wrap: break-word;
+    /* text-align: center; */
+}
+
+#heading > div {
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    /* text-align: center; */
+}
+
+.heading {
+    /* display: flex; */
+    /* align-items: center; */
+    /* padding: 30px; */
+    font-size: 1.5rem;
+}
+
+#divContainer > div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 2fr)) repeat(2, minmax(200px, 1fr));
+    grid-gap: 5px;
+    margin-top: 5px;
+    text-align: center;
+    height: max((80vh * 4/5)* 1/5, 10%);
+    /* overflow: overlay; */
+    align-items: center;
+    justify-items: center;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+}
+
+div#heading {
+}
+
+.heading {}
+
+div#status {
+    grid-column: 5 / 7;
+}
+
+
+main#main {
+    width: 90%;
+    /* border: solid 1px; */
+    height: max(80vh, 80%);
+    overflow: overlay;
+    min-width: min-content;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.newBtnContainer {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    margin-bottom: 5px;
+    width: inherit;
+}
+
+.myLibrary {
+    /* display: flex; */
+    /* justify-content: center; */
+    background: white;
+    font-size: 2rem;
+    padding: 25px;
+    text-align: center;
+    /* width: inherit; */
+    height: inherit;
+    flex: 3;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btns
+{
     width: 150px;
     margin: 10px;
-}
-
-
-td.readBtn {
-    width: 130px;
-}
-
-td.removeBtn {
-    width: 150px;
-    /* margin-left: 20px; */
-}
-
-.bookDescription {
-    max-width: 507px;
-    /* display: flex; */
-    text-align: center;
-}
-
-
-tr {
-    border: 1px solid black;
 }
 
 
@@ -69,10 +141,13 @@ dialog#dialog {
     width: 600px;
     height: 450px;
     overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 dialog::backdrop {
     background-color: mediumorchid;
+    opacity: 0.5;
+    background: linear-gradient(45deg, purple, lightgreen);
 }
 
 button {
@@ -80,10 +155,23 @@ button {
     background: white;
     border: none;
     padding: 10px;
+    /* text-align: center; */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.orangeBG {
+    background: coral;
+    height: min(84px, 100%);
+    width: max(80vh * 1/5, 10%);
+}
+
+.pinkBG {
+    background: mediumturquoise;
 }
 
 button#closeDialog {
     padding: 3px;
+    /* box-shadow: 2px 2px 5px rgba(0.5, 1, 1, 0.5); */
 }
 
 .question {
@@ -94,7 +182,7 @@ button#closeDialog {
 
 
 dialog > div {
-    background: dodgerblue;
+    background: cornflowerblue;
     display: flex;
     flex-direction: row-reverse;
 }
@@ -136,37 +224,62 @@ form {
     grid-gap: 50px;
     justify-items: center;
     padding: 20px;
-    background: dodgerblue;
+    background: cornflowerblue;
     width: 100%;
     height: 100%;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
 }
 
 
-main > div > button {background: gainsboro;padding: 5px;border: none;}
+main > div > button {/* background: turquoise; *//* padding: 5px; *//* border: 1px solid pink; */margin: 5px;height: inherit;flex: 1;}
+
+button#newBook {
+    margin: 0;
+}
+
+.removeBtn {
+    background: turquoise;
+    /* width: auto; */
+    height: min(84px, 100%);
+    width: max(80vh * 1/5, 10%);
+}
 
 
 body {
-    display: grid;
-    grid-template: minmax(300px, 3fr) / 
-    minmax(100px, 1fr) minmax(800px, 8fr);
-    grid-template-areas:
-        "sidebar main";
-    height: 100vh;
-    width: 100vw;
-    padding: 20px 20px 0px 0px;
+    /* display: grid; */
+    /* grid-template: minmax(300px, 3fr) / 
+    minmax(100px, 1fr) minmax(800px, 8fr); */
+    /* grid-template-areas:
+        "sidebar main"; */
+    /* height: 100vh; */
+    /* width: 100vw; */
+    /* padding: 20px 20px 0px 0px; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
 }
 
 body {
     background: dodgerblue;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 
-#main > div {
+#divContainer {
     color: black;
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     background: white;
     border: none;
-    padding: 10px;
+    /* padding: 10px; */
+    /* display: grid; */
+    /* grid-template: repeat(2, 50px) /repeat(3, minmax(100px, 1fr)) repeat(2, minmax(200px, 2fr)); */
+    width: fit-content;
+    /* height: fit-content; */
 }
 
