@@ -163,6 +163,8 @@ button {
 
 .pinkBG {
     background: mediumturquoise;
+    height: min(84px, 100%);
+    width: max(80vh * 1/5, 10%);
 }
 
 button#closeDialog {
