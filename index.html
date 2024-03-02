@@ -10,12 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
-    <sidebar>
+<body>      
         
         <dialog id="dialog">
             <div>
-                <button id="closeDialog">✖</button>
+                <button id="closeDialog" onclick="Book.closeDialog()">✖</button>
             </div>
             <form method="dialog">
                 <section>
@@ -31,8 +30,8 @@
                         </div>
 
                         <div class="question">
-                            <label for="pages">How many pages?</label>
-                            <input type="text" id="pages" name="pages" value="295">
+                            <label for="page">How many pages?</label>
+                            <input type="text" id="page" name="page" value="295">
                         </div>
 
                         <div class="question">
@@ -60,30 +59,22 @@
             </form>
         </dialog>
 
-        <menu>
-            <div>
-                <button id="newBook" onclick="Book.showDialog()">NEW BOOK</button>
-            </div>
-        </menu>
-
-
-        <dialog id="dialog">
-            <form method="dialog">
-            </form>
-        </dialog>
-
-        
-    </sidebar>
-
-
-    <head></head>
+ 
     <main id="main">
-        <table id=table style="width: 100%"> 
-            <tr>
-                <th>Description</th>
-                <th>Remove</th>
-                <th>Status</th>
-            </tr>
-        </table>
+        <div class="subMain1"> 
+            <div class="myLibrary">My Library</div>
+            <button id="newBook" onclick="Book.showDialog()">NEW BOOK</button>
+        </div>
+        
+
+        <div id="divContainer">
+            <div id="heading">
+                <div class="items">Title</div>
+                <div class="items">Author</div>
+                <div class="items">Page</div>
+                <div class="items">Remove</div>
+                <div class="items">Read</div>
+            </div>
+        </div>
     </main>
 </body>

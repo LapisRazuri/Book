@@ -1,42 +1,39 @@
 class Book {
     static dialog = document.getElementById("dialog");
+    static divContainer =  document.getElementById("divContainer");
     static table = document.getElementById("table");
     static myLibrary = [];
 
-    constructor (title, author, pages, read) {
+    constructor (title, author, page, read) {
         this.title = title;
         this.author = author;
-        this.pages = pages;
-        this.read = read;
-        this.info = function () {
-            return "The" + " "+ this.title + " " + "by" + " " +  this.author + 
-                    "," + " " + this.pages + " " + "pages" + "." 
-        }
+        this.page = page;
+        this.status = read;
+        this.info = [this.title, this.author, this.page]
+        this.userBookDiv = document.createElement("div");
 
     };
 
     static createNewBook(event) {
         const title = document.getElementById("title").value;
         const author = document.getElementById("author").value;
-        const pages = document.getElementById("pages").value;
-        const read = document.querySelector('input[name="readOrNotRead"]:checked').value;
+        const page = document.getElementById("page").value;
+        const status = document.querySelector('input[name="readOrNotRead"]:checked').value;
         // const read = document.getElementById("readOrNotRead").value;
 
-        console.log(title);
-        console.log(author);
-        console.log(pages);
-        console.log(read);
-
-        const book = new Book(title, author, pages, read);
+        const book = new Book(title, author, page, status);
 
         event.preventDefault();
 
-        console.log(book);
+        console.log(book.userBookDiv)
 
         Book.addBookToLibrary(book);
         Book.displayNewBook(book);
         Book.displayRemoveBtn(book);
         Book.displayReadBtn(book);
+
+        
+       
        
         return this.book;
 
@@ -45,76 +42,57 @@ class Book {
     static addBookToLibrary (book) {
         Book.myLibrary.push(book);  
 
-        console.log(book);
-
         return book;
     };
 
-    static displayNewBook(book) {
-        const booktr = document.createElement("tr");
-        const booktd = document.createElement("td");
+    static displayNewBook (book) {
+        console.log(book.userBookDiv)
+        Book.divContainer.appendChild(book.userBookDiv);
+            for (let i = 0; i < book.info.length; i ++) {
+            const div = document.createElement("div");
+            book.userBookDiv.appendChild(div);
+            div.textContent = book.info[i];
+            div.classList.add('items');
+        }    
+    }
 
-        table.appendChild(booktr);
-        booktr.appendChild(booktd);
-
-        booktd.id = book.title;
-        // this.booktd.setAttribute("data-bookNo", this.book.title);
-        booktd.textContent = book.info();
-        booktd.classList.add('bookDescription');
-        
-
-        return booktd;
-    };
+   
 
     static displayRemoveBtn (book) {
-        const removeBtntr = document.createElement("tr");
-        const removeBtntd = document.createElement("td");
         const removeBtn = document.createElement("button");
-
-        table.appendChild(removeBtntr);
-        removeBtntr.appendChild(removeBtntd);
-        removeBtntd.appendChild(removeBtn);
+        console.log(book.userBookDiv)
+        book.userBookDiv.appendChild(removeBtn);
 
         removeBtn.textContent = "REMOVE BOOK";
-        removeBtntd.classList.add('removeBtn');
-
-        
+        removeBtn.classList.add('removeBtn');
 
         removeBtn.addEventListener('click', () => {
-            console.log(this)
-            book.removeBook(book, removeBtntr);
-            console.log(book)
+            Book.myLibrary.splice(book, 1);
+            book.userBookDiv.remove();
         });
-    };
 
- 
-    removeBook (removeBook, removeBtnTr) {
-        Book.myLibrary.splice(removeBook, 1);
-        console.log(removeBook)
-        removeBtnTr.remove();
+        return removeBtn;
     };
 
     static displayReadBtn (book) {
-        const readBtntr = document.createElement("tr");
-        const readBtntd = document.createElement("td");
         const readBtn = document.createElement("button");
 
-        table.appendChild(readBtntr);
-        readBtntr.appendChild(readBtntd);
-        readBtntd.appendChild(readBtn);
+        book.userBookDiv.appendChild(readBtn);
     
-        console.log(book.read)
-        readBtn.textContent = book.read;
-        readBtntd.classList.add('readBtn');
-    
-        
-    
-    
+        readBtn.textContent = book.status;
+        readBtn.textContent == "READ"? readBtn.classList.add('pinkBG'): readBtn.classList.add('orangeBG');
+
         readBtn.addEventListener('click', () => {
             readBtn.textContent = (readBtn.textContent == "NOT READ YET") ? "READ" : "NOT READ YET";
+            readBtn.textContent == "READ"? 
+            readBtn.classList.add('pinkBG') && readBtn.classList.remove('orangeBG'): 
+            readBtn.classList.add('orangeBG' && readBtn.classList.remove('pinkBG'));
         });
-    
+
+        return readBtn;
     };
+
+    
 
     static showDialog(){
         
