@@ -5,8 +5,6 @@
     font-family: 'Mulish', sans-serif;
 }
 
-div#subMain2 {}
-
 div#subMain2 {
     display: flex;
     flex-direction: row;
@@ -25,7 +23,7 @@ div#heading {
     display: flex;
 }
 
-div#heading {}
+
 
 .items {
     padding: 1.5rem;
@@ -36,10 +34,7 @@ div#heading {}
     /* text-align: center; */
 }
 
-#heading > div {
-    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
-    /* text-align: center; */
-}
+
 
 .heading {
     /* display: flex; */
@@ -61,10 +56,6 @@ div#heading {}
     /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
 }
 
-div#heading {
-}
-
-.heading {}
 
 div#status {
     grid-column: 5 / 7;
@@ -106,6 +97,11 @@ main#main {
     width: 150px;
     margin: 10px;
 }
+
+
+
+
+
 
 
 menu > div {
@@ -201,7 +197,9 @@ dialog > div {
     grid-row: 2 /3;
 }
 
-.question1 {grid-row: 1 /2;}
+.question1 {
+    grid-row: 1 /2;
+}
 
 
 
@@ -209,11 +207,6 @@ dialog > div {
 .questions {
     display: grid;
     grid-template: repeat(4, minmax(50px, 1fr)) / minmax(200px, 1fr);
-    /* grid-template-areas:
-        "question1"
-        "question2"
-        "question3"
-        "question4"; */
     justify-content: center;
     align-items: center;
 }
@@ -231,7 +224,11 @@ form {
 }
 
 
-main > div > button {/* background: turquoise; *//* padding: 5px; *//* border: 1px solid pink; */margin: 5px;height: inherit;flex: 1;}
+main > div > button {
+    /* background: turquoise; *//* padding: 5px; *//* border: 1px solid pink; */
+    margin: 5px;
+    height: inherit;
+    flex: 1;}
 
 button#newBook {
     margin: 0;
@@ -262,7 +259,6 @@ body {
 body {
     background: dodgerblue;
     font-size: 16px;
-    display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
@@ -276,10 +272,9 @@ body {
     justify-content: space-around;
     background: white;
     border: none;
-    /* padding: 10px; */
-    /* display: grid; */
-    /* grid-template: repeat(2, 50px) /repeat(3, minmax(100px, 1fr)) repeat(2, minmax(200px, 2fr)); */
+    /* padding: 10px;
+    display: grid; */
     width: fit-content;
-    /* height: fit-content; */
+    /* grid-template: repeat(2, 50px) /repeat(3, minmax(100px, 1fr)) repeat(2, minmax(200px, 2fr)); */
 }
 
