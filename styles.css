@@ -15,7 +15,7 @@ div#subMain2 {
 .subMain1 {
     width: 100%;
     display: flex;
-    /* height: max(80vh * 1/5, 20%); */
+    height: max(71.8px, 10%);
 }
 
 div#heading {
@@ -26,12 +26,14 @@ div#heading {
 
 
 .items {
-    padding: 1.5rem;
+    /* margin: max(0.4rem, 3% / 6); */
     /* overflow: overlay; */
-    height: max(((80vh * 4/5)* 1/5)* 0.5/10, 5%);
-    width: max(80vh * 1/5, 10%);
+    height: 90%;
+    width: max(60px, 100%);
     word-wrap: break-word;
     /* text-align: center; */
+    font-size: max(0.1rem, 70%);
+    /* border: solid 1px; */
 }
 
 
@@ -45,15 +47,19 @@ div#heading {
 
 #divContainer > div {
     display: grid;
-    grid-template-columns: repeat(3, minmax(100px, 2fr)) repeat(2, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(60px, 1fr)) repeat(2, minmax(60px, 2fr));
     grid-gap: 5px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     text-align: center;
-    height: max((80vh * 4/5)* 1/5, 10%);
+    height: max(44px, 20%);
     /* overflow: overlay; */
     align-items: center;
     justify-items: center;
     /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    width: 100%;
+    height: max(44px, 10%);
+    padding-top: 20px;
+    border-bottom: cornflowerblue solid 1px;
 }
 
 
@@ -63,13 +69,14 @@ div#status {
 
 
 main#main {
-    width: 90%;
+    width: max(322px, 90%);
     /* border: solid 1px; */
-    height: max(80vh, 80%);
+    height: max(718px, 80%);
     overflow: overlay;
-    min-width: min-content;
+    /* min-width: min-content; */
     background: white;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* max-height: max-content; */
 }
 
 .newBtnContainer {
@@ -83,13 +90,14 @@ main#main {
     /* display: flex; */
     /* justify-content: center; */
     background: white;
-    font-size: 2rem;
-    padding: 25px;
+    font-size: 1.5rem;
+    padding: min(20px, 4%);
     text-align: center;
-    /* width: inherit; */
-    height: inherit;
+    width: max(200px, 90%);
     flex: 3;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    height: max(64px, 100%);
+    /* min-height: fit-content; */
 }
 
 .btns
@@ -157,14 +165,14 @@ button {
 
 .orangeBG {
     background: coral;
-    height: min(84px, 100%);
-    width: max(80vh * 1/5, 10%);
+    height: 100%;
+    width: 80%;
 }
 
 .pinkBG {
     background: mediumturquoise;
-    height: min(84px, 100%);
-    width: max(80vh * 1/5, 10%);
+    height: 100%;
+    width: 80%;
 }
 
 button#closeDialog {
@@ -227,20 +235,26 @@ form {
 
 
 main > div > button {
-    /* background: turquoise; *//* padding: 5px; *//* border: 1px solid pink; */
+    /* background: turquoise; */
+    /* padding: 5px; */
+    /* border: 1px solid pink; */
     margin: 5px;
     height: inherit;
-    flex: 1;}
+    flex: 1;
+    width: min(100px, 10%);
+    font-size: 1rem;
+    }
 
 button#newBook {
     margin: 0;
+    height: max(64px, 100%);
 }
 
 .removeBtn {
     background: turquoise;
     /* width: auto; */
-    height: min(84px, 100%);
-    width: max(80vh * 1/5, 10%);
+    height: 100%;
+    width: 80%;
 }
 
 
@@ -276,7 +290,7 @@ body {
     border: none;
     /* padding: 10px;
     display: grid; */
-    width: fit-content;
-    /* grid-template: repeat(2, 50px) /repeat(3, minmax(100px, 1fr)) repeat(2, minmax(200px, 2fr)); */
+    width: 100%;
+    height: 90%;
 }
 

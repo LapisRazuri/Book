@@ -11,7 +11,6 @@ class Book {
         this.status = read;
         this.info = [this.title, this.author, this.page]
         this.userBookDiv = document.createElement("div");
-
     };
 
     static createNewBook(event) {
@@ -32,11 +31,7 @@ class Book {
         Book.displayRemoveBtn(book);
         Book.displayReadBtn(book);
 
-        
-       
-       
         return this.book;
-
     };
 
     static addBookToLibrary (book) {
@@ -55,8 +50,6 @@ class Book {
             div.classList.add('items');
         }    
     }
-
-   
 
     static displayRemoveBtn (book) {
         const removeBtn = document.createElement("button");
@@ -92,8 +85,6 @@ class Book {
         return readBtn;
     };
 
-    
-
     static showDialog(){
         
         return Book.dialog.showModal();
@@ -104,3 +95,4 @@ class Book {
         return Book.dialog.close();
     };
 };  
+
